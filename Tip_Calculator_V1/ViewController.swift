@@ -249,8 +249,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.TipAmountLabel.center = CGPoint(x: 99, y: 263)
                 self.TipAmountValue.center  = CGPoint(x: 234,y: 264)
                 self.button15.center = CGPoint(x: 89,y: 303)
+                self.button30.center = CGPoint(x: 237,y: 303)
                 self.button25.center = CGPoint(x: 162,y: 303)
-                self.button30.center = CGPoint(x: 237,y: 303 )
             }, completion: nil )
         }
         else{
@@ -262,8 +262,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.TipAmountLabel.center = CGPoint(x: 99, y: 500)
                 self.TipAmountValue.center  = CGPoint(x: 234,y: 500)
                 self.button15.center = CGPoint(x: 89,y: 500)
-                self.button25.center = CGPoint(x: 162,y: 500)
                 self.button30.center = CGPoint(x: 237,y: 500)
+                 self.button25.center = CGPoint(x: 162,y: 500)
             }, completion: nil )
             InputBillAmount.font = UIFont(name:"fontname", size: 10.0)
         }

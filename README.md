@@ -16,7 +16,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] Settings page to change the default tip percentage.
-* [ ] UI animations
+* [X] UI animations
 * [X] Remembering the bill amount across app restarts (if <10mins)
 * [X] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
@@ -40,7 +40,7 @@ Describe any challenges encountered while building the app.
 1.) Working with the optional chaining syntax in swift. 
 2.) Making the view controller and connecting the two controller.
 3.) Understanding how to pass data between view controllers. 
-4.) Making the application work with currencies of different number of strings.
+4.) Making the application work with currencies of different number of characters.
 5.) Which process in the application should be appropriate to store the data in the local database. 
 
 ## License
