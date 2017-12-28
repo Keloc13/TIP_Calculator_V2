@@ -48,8 +48,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         TipAmountLabel.center = CGPoint(x: 99,y: 500)
         TipAmountValue.center  = CGPoint(x: 234,y: 500)
         button15.center = CGPoint(x: 89, y: 500)
-        button25.center = CGPoint(x: 162, y: 500)
         button30.center = CGPoint(x: 237,y: 500)
+        button25.center = CGPoint(x: 162, y: 500)
         button30.layer.cornerRadius = 8
         button15.layer.cornerRadius = 8
         InputBillAmount.delegate = self
@@ -235,8 +235,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(TipAmountValue)
         view.addSubview(TipAmountLabel)
         view.addSubview(button15)
-        view.addSubview(button25)
         view.addSubview(button30)
+        view.addSubview(button25)
         view.addSubview(InputBillAmount)
         
         if InputBillAmount.text! != String(ViewController.getSymbolForCurrencyCode()!) + "0.0"{
