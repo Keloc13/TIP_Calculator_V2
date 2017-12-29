@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var percentType = 0.0
     
-    let DEBUG = true
+    let DEBUG = false
     var startTyping = false
     
     /*
@@ -55,6 +55,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         InputBillAmount.delegate = self
 
         TipAmountValue.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
+        InputBillAmount.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
+        
         InputBillAmount.becomeFirstResponder()
         
         let defaults = UserDefaults.standard
@@ -65,19 +67,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             {
                 if let stringOne = defaults.string(forKey: defaultKeys.key1){
                     InputBillAmount.text! = stringOne
-                }else{
-                    InputBillAmount.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
                 }
                 
                 if let stringTwo = defaults.string(forKey: defaultKeys.key2){
                     InputPlusTip.text! = stringTwo
-                }else{
-                    InputPlusTip.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
                 }
-            }else{
-                InputBillAmount.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
-                InputPlusTip.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
             }
+            changeCorrdinate()
         }
     }
     
@@ -154,14 +150,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let stringValue = InputBillAmount!.text{
             if((stringValue.count == 1  && stringValue != String(describing: ViewController.getSymbolForCurrencyCode()) ) || stringValue.count > 1){
                 var billAmount = 0.0
-        
                 if(String(describing: stringValue.first) == String(describing: ViewController.getSymbolForCurrencyCode()!.first) && stringValue.count > 1){
                     
                     let index = stringValue.index(stringValue.startIndex, offsetBy: 1)
-                    
                     billAmount = round((100)*Double(stringValue[index...])!)/100
                     
                 }else if String(describing: stringValue.first) != String(describing: ViewController.getSymbolForCurrencyCode()!.first)  {
+                    print("THE VALUE IS \(stringValue)")
                     billAmount = round(10*Double(stringValue)!)/10
                 }
                 
