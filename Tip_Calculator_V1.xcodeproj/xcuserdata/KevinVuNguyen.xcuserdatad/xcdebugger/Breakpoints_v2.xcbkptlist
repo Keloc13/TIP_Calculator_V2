@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.752522"
+            timestampString = "536366113.934645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.753335"
+            timestampString = "536366113.935248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "updateBillAndTip()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.753765"
+            timestampString = "536366113.935668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "updateBillAndTip()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.754251"
+            timestampString = "536366113.936031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "updateBillAndTip()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.754664"
+            timestampString = "536366113.93632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "updateInputText(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.755033"
+            timestampString = "536366113.936643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.755516"
+            timestampString = "536366113.936958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "updateInputText(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536314749.755832"
+            timestampString = "536366113.937315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "updateInputText(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -11,21 +11,20 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var InputBillAmountL: UITextField!
-    @IBOutlet weak var InputPlusTipL: UITextField!
+    @IBOutlet weak var BillPlusTipL: UITextField!
     @IBOutlet weak var TipAmountL: UILabel!
     @IBOutlet weak var TipAmountValueL: UILabel!
     
-    @IBOutlet weak var button30: UIButton!
-    @IBOutlet weak var button25: UIButton!
-    @IBOutlet weak var button15: UIButton!
+    @IBOutlet weak var buttonRight: UIButton!
+    @IBOutlet weak var buttonCenter: UIButton!
+    @IBOutlet weak var buttonLeft: UIButton!
     
-    @IBOutlet weak var BillTipLabel: UILabel!
-    @IBOutlet weak var TipPercentLabel: UILabel!
-    @IBOutlet weak var TipAmountLabel: UILabel!
+    @IBOutlet weak var LabelBillTip: UILabel!
+    @IBOutlet weak var LabelTipPercent: UILabel!
+    @IBOutlet weak var LabelTipAmount: UILabel!
     
-    var percentType = 0.0
-    
-    let DEBUG = false
+    var percentType: Double = 0.0
+    let DEBUG: Bool = false
     
     /*
      LIFECYCLE METHODS
@@ -41,37 +40,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         TipAmountL.center = CGPoint(x: 234,y: 500)
-        InputPlusTipL.center = CGPoint(x: 161,y: 500)
-        BillTipLabel.center = CGPoint(x: 160,y: 500)
-        TipPercentLabel.center = CGPoint(x: 101,y: 500)
-        TipAmountLabel.center = CGPoint(x: 99,y: 500)
+        BillPlusTipL.center = CGPoint(x: 161,y: 500)
+        LabelBillTip.center = CGPoint(x: 160,y: 500)
+        LabelTipPercent.center = CGPoint(x: 101,y: 500)
+        LabelTipAmount.center = CGPoint(x: 99,y: 500)
         TipAmountValueL.center  = CGPoint(x: 234,y: 500)
-        button15.center = CGPoint(x: 89,y: 500)
-        button30.center = CGPoint(x: 237,y: 500)
-        button25.center = CGPoint(x: 162,y: 500)
-        button30.layer.cornerRadius = 8
-        button15.layer.cornerRadius = 8
+        buttonLeft.center = CGPoint(x: 89,y: 500)
+        buttonRight.center = CGPoint(x: 237,y: 500)
+        buttonCenter.center = CGPoint(x: 162,y: 500)
+        buttonRight.layer.cornerRadius = 8
+        buttonLeft.layer.cornerRadius = 8
+        
         InputBillAmountL.delegate = self
-
         TipAmountValueL.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
         InputBillAmountL.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
-        
         InputBillAmountL.becomeFirstResponder()
         
         let defaults = UserDefaults.standard
         
         if let dateOne = defaults.string(forKey: defaultKeys.keyTime){
             
-            if(Double(dateOne)! + 600 > NSDate().timeIntervalSince1970)
-            {
-                if let stringOne = defaults.string(forKey: defaultKeys.key1){
+            if(Double(dateOne)! + 600 > NSDate().timeIntervalSince1970) {
+                if let stringOne = defaults.string(forKey: defaultKeys.key1) {
                     InputBillAmountL.text! = stringOne
                 }
-                if let stringTwo = defaults.string(forKey: defaultKeys.key2){
-                    InputPlusTipL.text! = stringTwo
+                if let stringTwo = defaults.string(forKey: defaultKeys.key2) {
+                    BillPlusTipL.text! = stringTwo
                 }
             }
-            changeCorrdinate()
+            changeCoordinate()
         }
     }
     
@@ -82,24 +79,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if DEBUG{ print("view will appear")}
-        button15.setTitle(String(Data.getPercent(value: 0)*100)+"%", for: .normal)
-        button25.setTitle(String(Data.getPercent(value: 1)*100)+"%", for: .normal)
-        button30.setTitle(String(Data.getPercent(value: 2)*100)+"%", for: .normal)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if DEBUG{ print("view did appear")}
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if DEBUG{ print("View will disappear")}
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        if DEBUG { print("view will appear") }
+        buttonLeft.setTitle(String(Data.getPercent(value: 0)*100)+"%", for: .normal)
+        buttonCenter.setTitle(String(Data.getPercent(value: 1)*100)+"%", for: .normal)
+        buttonRight.setTitle(String(Data.getPercent(value: 2)*100)+"%", for: .normal)
     }
     
     /*    METHOD FOR UPDATING THE CURRENCY VALUES      */
@@ -110,26 +93,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
      */
     
     @IBAction func updateInputText(_ sender: UITextField) {
-        if DEBUG{ print("1. Program made it into UpdateInputText method")}
+        if DEBUG { print("1. Program made it into UpdateInputText method") }
        
-        if let value = InputBillAmountL!.text{
-            if value.count != 0{
-                if value.count == (4 + String(ViewController.getSymbolForCurrencyCode()!).count) && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count ))) == String(ViewController.getSymbolForCurrencyCode()!) + "0.0"{
+        if let value = InputBillAmountL!.text {
+            if value.count != 0 {
+                if value.count == (4 + String(ViewController.getSymbolForCurrencyCode()!).count) && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count ))) == String(ViewController.getSymbolForCurrencyCode()!) + "0.0" {
                    
                     let indexEnd = value.index(value.endIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count - value.count)
                     InputBillAmountL.text! = String(value[indexEnd...])
-                    changeCorrdinate()
-                }
-                else if value.count == String(ViewController.getSymbolForCurrencyCode()!).count + 2 && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: String(ViewController.getSymbolForCurrencyCode()!).count + 2))) == String(ViewController.getSymbolForCurrencyCode()!) + "0."{
+                    changeCoordinate()
+                } else if value.count == String(ViewController.getSymbolForCurrencyCode()!).count + 2 && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: String(ViewController.getSymbolForCurrencyCode()!).count + 2))) == String(ViewController.getSymbolForCurrencyCode()!) + "0." {
                     
                     InputBillAmountL.text! = ""
-                    changeCorrdinate()
+                    changeCoordinate()
                 }
-            }
-           else{
+            } else {
                 InputBillAmountL?.text = String(ViewController.getSymbolForCurrencyCode()!) + "0.0"
-                InputPlusTipL?.text = InputBillAmountL.text!
-                changeCorrdinate()
+                BillPlusTipL?.text = InputBillAmountL.text!
+                changeCoordinate()
             }
         }
         updateBillAndTip()
@@ -142,118 +123,114 @@ class ViewController: UIViewController, UITextFieldDelegate {
      */
     
     func updateBillAndTip(){
-        if DEBUG{ print("Made it into UpdateBillAmount")}
+        if DEBUG { print("Made it into UpdateBillAmount") }
         
-        if let stringValue = InputBillAmountL!.text{
-            if((stringValue.count == 1
+        if let stringValue = InputBillAmountL!.text {
+            if ((stringValue.count == 1
                 && stringValue != String(describing: ViewController.getSymbolForCurrencyCode()))
-                || stringValue.count > 1){
+                || stringValue.count > 1) {
                 var billAmount = 0.0
-                if(String(describing: stringValue.first) == String(describing: ViewController.getSymbolForCurrencyCode()!.first) && stringValue.count > 1){
-                    
+                
+                if (String(describing: stringValue.first) ==
+                    String(describing: ViewController.getSymbolForCurrencyCode()!.first)
+                    && stringValue.count > 1) {
                     let index = stringValue.index(stringValue.startIndex, offsetBy: 1)
                     billAmount = round((100)*Double(stringValue[index...])!)/100
-                    
-                }else if String(describing: stringValue.first) != String(describing: ViewController.getSymbolForCurrencyCode()!.first)  {
-                    print("THE VALUE IS \(stringValue)")
+                } else if String(describing: stringValue.first) !=
+                    String(describing: ViewController.getSymbolForCurrencyCode()!.first) {
                     billAmount = round(10*Double(stringValue)!)/10
                 }
-                
-                InputPlusTipL.text! = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount + billAmount*percentType)
+                BillPlusTipL.text! = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount + billAmount*percentType)
                 TipAmountL.text! = String(100*percentType) + "%"
                 TipAmountValueL.text! = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount*percentType)
             }
         }
     }
     
-    /*
-    update Methods for the percent
-     */
-    @IBAction func update15Percent(_ sender: UIButton) {
+    /* UPDATE METHOD OF THE PERCENT BUTTONS */
+    
+    @IBAction func updateLeftPercent(_ sender: UIButton) {
         percentType = Data.getPercent(value: 0)
-        print(Data.getPercent(value: 0)*100)
         updateBillAndTip()
-        button15.backgroundColor = UIColor.darkGray
-        button25.backgroundColor = UIColor.gray
-        button30.backgroundColor = UIColor.gray
+        buttonLeft.backgroundColor = UIColor.darkGray
+        buttonCenter.backgroundColor = UIColor.gray
+        buttonRight.backgroundColor = UIColor.gray
     }
     
-    @IBAction func update25Percent(_ sender: UIButton) {
+    @IBAction func updateCenterPercent(_ sender: UIButton) {
         percentType = Data.getPercent(value: 1)
         updateBillAndTip()
-        button15.backgroundColor = UIColor.gray
-        button25.backgroundColor = UIColor.darkGray
-        button30.backgroundColor = UIColor.gray
+        buttonLeft.backgroundColor = UIColor.gray
+        buttonCenter.backgroundColor = UIColor.darkGray
+        buttonRight.backgroundColor = UIColor.gray
     }
     
-    @IBAction func update30Percent(_ sender: UIButton) {
+    @IBAction func updateRightPercent(_ sender: UIButton) {
         percentType = Data.getPercent(value: 2)
         updateBillAndTip()
-        button15.backgroundColor = UIColor.gray
-        button25.backgroundColor = UIColor.gray
-        button30.backgroundColor = UIColor.darkGray
+        buttonLeft.backgroundColor = UIColor.gray
+        buttonCenter.backgroundColor = UIColor.gray
+        buttonRight.backgroundColor = UIColor.darkGray
     }
     
-    /*
-        method for getting the currency symbol of the region
-     */
+    /* METHOD FOR ACQUIRING THE CURRENCY SYMBOL OF THE SPECIFIC REGION */
+    
     static func getSymbolForCurrencyCode() -> String? {
         return NSLocale.autoupdatingCurrent.currencySymbol
     }
     
+    /* METHOD TO STORE THE BILL AMOUNT FOR FUTURE USE */
+    
     func storesInputandTip(){
-        if DEBUG{print("stores input and tip values in database.")}
+        if DEBUG { print("stores input and tip values in database.") }
         let defaults = UserDefaults.standard
         
-        if InputBillAmountL.text! != ViewController.getSymbolForCurrencyCode()! + "0.0"{
+        if InputBillAmountL.text! != ViewController.getSymbolForCurrencyCode()! + "0.0" {
             defaults.set(String(InputBillAmountL.text!),forKey: defaultKeys.key1)
-        }else{
+        } else {
             defaults.set(String("0.0"),forKey: defaultKeys.key1)
         }
-        defaults.set(String(InputPlusTipL.text!),forKey: defaultKeys.key2)
-        defaults.set(String( NSDate().timeIntervalSince1970),forKey:defaultKeys.keyTime)
+        defaults.set(String(BillPlusTipL.text!),forKey: defaultKeys.key2)
+    defaults.set(String( NSDate().timeIntervalSince1970),forKey:defaultKeys.keyTime)
     }
     
-    /*
-     Animations
-     */
-    func changeCorrdinate(){
+    /* ANIMATION */
+    
+    func changeCoordinate(){
         view.addSubview(TipAmountL)
-        view.addSubview(InputPlusTipL)
-        view.addSubview(BillTipLabel)
-        view.addSubview(TipPercentLabel)
+        view.addSubview(BillPlusTipL)
+        view.addSubview(LabelBillTip)
+        view.addSubview(LabelTipPercent)
         view.addSubview(TipAmountValueL)
-        view.addSubview(TipAmountLabel)
-        view.addSubview(button15)
-        view.addSubview(button30)
-        view.addSubview(button25)
+        view.addSubview(LabelTipAmount)
+        view.addSubview(buttonLeft)
+        view.addSubview(buttonRight)
+        view.addSubview(buttonCenter)
         view.addSubview(InputBillAmountL)
         
-        if InputBillAmountL.text! != String(ViewController.getSymbolForCurrencyCode()!) + "0.0"{
-            
+        if InputBillAmountL.text! != String(ViewController.getSymbolForCurrencyCode()!) + "0.0" {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
                 self.TipAmountL.center = CGPoint(x: 234,y: 236)
-                self.InputPlusTipL.center = CGPoint(x: 161,y: 199)
-                self.BillTipLabel.center = CGPoint(x: 160,y: 170)
-                self.TipPercentLabel.center = CGPoint(x: 101,y: 233)
-                self.TipAmountLabel.center = CGPoint(x: 99,y: 263)
+                self.BillPlusTipL.center = CGPoint(x: 161,y: 199)
+                self.LabelBillTip.center = CGPoint(x: 160,y: 170)
+                self.LabelTipPercent.center = CGPoint(x: 101,y: 233)
+                self.LabelTipAmount.center = CGPoint(x: 99,y: 263)
                 self.TipAmountValueL.center  = CGPoint(x: 234,y: 264)
-                self.button15.center = CGPoint(x: 89,y: 303)
-                self.button30.center = CGPoint(x: 237,y: 303)
-                self.button25.center = CGPoint(x: 162,y: 303)
+                self.buttonLeft.center = CGPoint(x: 89,y: 303)
+                self.buttonRight.center = CGPoint(x: 237,y: 303)
+                self.buttonCenter.center = CGPoint(x: 162,y: 303)
             }, completion: nil)
-        }
-        else{
+        } else {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
                 self.TipAmountL.center = CGPoint(x: 234,y: 500)
-                self.InputPlusTipL.center = CGPoint(x: 161,y: 500)
-                self.BillTipLabel.center = CGPoint(x: 160,y: 500)
-                self.TipPercentLabel.center = CGPoint(x: 101,y: 500)
-                self.TipAmountLabel.center = CGPoint(x: 99,y: 500)
+                self.BillPlusTipL.center = CGPoint(x: 161,y: 500)
+                self.LabelBillTip.center = CGPoint(x: 160,y: 500)
+                self.LabelTipPercent.center = CGPoint(x: 101,y: 500)
+                self.LabelTipAmount.center = CGPoint(x: 99,y: 500)
                 self.TipAmountValueL.center  = CGPoint(x: 234,y: 500)
-                self.button15.center = CGPoint(x: 89,y: 500)
-                self.button30.center = CGPoint(x: 237,y: 500)
-                 self.button25.center = CGPoint(x: 162,y: 500)
+                self.buttonLeft.center = CGPoint(x: 89,y: 500)
+                self.buttonRight.center = CGPoint(x: 237,y: 500)
+                self.buttonCenter.center = CGPoint(x: 162,y: 500)
             }, completion: nil)
             InputBillAmountL.font = UIFont(name:"fontname", size: 10.0)
         }

@@ -29,7 +29,7 @@ class SettingViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        if DEBUG{print("Made it to settingViewController load")}
+        if DEBUG { print("Made it to settingViewController load") }
         
         resetOL.layer.cornerRadius = 8
         changeOL.layer.cornerRadius = 8
@@ -44,33 +44,26 @@ class SettingViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        if DEBUG{print("Made it to didReceiveMemoryWarning method")}
-        // Dispose of any resources that can be recreated.
-    }
     
     /*
      Method Name: changeButton
      Description: This method takes the percent from the three text fields and updates the percent choices on the previous page.
      */
     @IBAction func changeButton(_ sender: UIButton) {
-        if newInput1.text != ""{
-            if let newPercent1 = newInput1!.text{
+        if newInput1.text != "" {
+            if let newPercent1 = newInput1!.text {
                 firstCurrentPerc.text! =  newInput1.text! + "%"
                 Data.setPercent(value: 0, newPercent: Double(newPercent1)!/100)
             }
         }
-        if(newInput2!.text! != "")
-        {
-            if let newPercent2 = newInput2!.text{
+        if (newInput2!.text! != "") {
+            if let newPercent2 = newInput2!.text {
                 secondCurrentPerc.text! =  newInput2.text! + "%"
                 Data.setPercent(value: 1, newPercent: Double(newPercent2)!/100)
             }
         }
-        if newInput3!.text! != ""{
-            if let newPercent1 = newInput3!.text{
+        if newInput3!.text! != "" {
+            if let newPercent1 = newInput3!.text {
                 thirdCurrentPerc.text! =  newInput3.text! + "%"
                 Data.setPercent(value: 2, newPercent: Double(newPercent1)!/100)
             }
@@ -88,7 +81,7 @@ class SettingViewController: UIViewController {
     @IBAction func resetButton(_ sender: UIButton) {
         if let _ = firstCurrentPerc,
             let _ = secondCurrentPerc,
-            let _ = thirdCurrentPerc{
+            let _ = thirdCurrentPerc {
         firstCurrentPerc.text! = "15.0%"
         secondCurrentPerc.text! = "25.0%"
         thirdCurrentPerc.text! = "30.0%"

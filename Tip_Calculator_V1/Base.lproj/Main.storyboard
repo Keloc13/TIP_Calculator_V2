@@ -70,7 +70,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="update15Percent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="et6-5J-4MH"/>
+                                    <action selector="updateLeftPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kH3-3w-Psr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-Tf-jKp">
@@ -95,7 +95,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="update30Percent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tfk-ON-dFa"/>
+                                    <action selector="updateRightPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zr7-7F-g1P"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-9c-BUv">
@@ -106,7 +106,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="update25Percent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JPW-Co-9pz"/>
+                                    <action selector="updateCenterPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="we2-vL-zci"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g6-mb-UV9">
@@ -142,16 +142,16 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="BillTipLabel" destination="2Gi-02-03H" id="7SI-2z-hqQ"/>
-                        <outlet property="InputBillAmount" destination="nTr-VI-6AZ" id="dQH-s5-Waa"/>
-                        <outlet property="InputPlusTip" destination="HQw-aP-EzB" id="Kba-lq-FM2"/>
-                        <outlet property="TipAmount" destination="4g6-mb-UV9" id="YvQ-Ef-4hj"/>
-                        <outlet property="TipAmountLabel" destination="Iq4-xm-Pe9" id="UDK-sc-XtA"/>
-                        <outlet property="TipAmountValue" destination="Dtr-Tf-jKp" id="PeE-fY-rHh"/>
-                        <outlet property="TipPercentLabel" destination="aZE-qK-pUk" id="7ra-Jc-teT"/>
-                        <outlet property="button15" destination="Nul-wN-wKW" id="3ja-2K-xtZ"/>
-                        <outlet property="button25" destination="NJx-9c-BUv" id="4NR-S5-gma"/>
-                        <outlet property="button30" destination="9R4-9s-ajU" id="Oa0-KA-ZTQ"/>
+                        <outlet property="BillPlusTipL" destination="HQw-aP-EzB" id="j1y-qk-9Tb"/>
+                        <outlet property="InputBillAmountL" destination="nTr-VI-6AZ" id="nLt-lp-n1o"/>
+                        <outlet property="LabelBillTip" destination="2Gi-02-03H" id="BFw-rU-aE1"/>
+                        <outlet property="LabelTipAmount" destination="Iq4-xm-Pe9" id="e1h-sc-gF0"/>
+                        <outlet property="LabelTipPercent" destination="aZE-qK-pUk" id="Drs-UJ-Gjo"/>
+                        <outlet property="TipAmountL" destination="4g6-mb-UV9" id="zHr-nE-ibL"/>
+                        <outlet property="TipAmountValueL" destination="Dtr-Tf-jKp" id="BJp-Xu-Ugz"/>
+                        <outlet property="buttonCenter" destination="NJx-9c-BUv" id="gB6-Q6-Fp7"/>
+                        <outlet property="buttonLeft" destination="Nul-wN-wKW" id="f30-ke-saP"/>
+                        <outlet property="buttonRight" destination="9R4-9s-ajU" id="E1A-Et-M5B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
