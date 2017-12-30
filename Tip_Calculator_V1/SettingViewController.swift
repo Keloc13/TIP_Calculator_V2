@@ -29,16 +29,18 @@ class SettingViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        if DEBUG{
-        print("Made it to settingViewController load")
-        }
+        if DEBUG{print("Made it to settingViewController load")}
         
         resetOL.layer.cornerRadius = 8
         changeOL.layer.cornerRadius = 8
         
+        if  let _ = firstCurrentPerc.text,
+            let _ = secondCurrentPerc.text,
+            let _ = thirdCurrentPerc.text {
         firstCurrentPerc.text! = String(Data.getPercent(value: 0)*100) + "%"
         secondCurrentPerc.text! = String(Data.getPercent(value: 1)*100) + "%"
         thirdCurrentPerc.text! = String(Data.getPercent(value: 2)*100) + "%"
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -84,26 +86,20 @@ class SettingViewController: UIViewController {
      Description: This method sets all the text fields and percent to the default 15%, 25%, and 30%.
      */
     @IBAction func resetButton(_ sender: UIButton) {
+        if let _ = firstCurrentPerc,
+            let _ = secondCurrentPerc,
+            let _ = thirdCurrentPerc{
         firstCurrentPerc.text! = "15.0%"
         secondCurrentPerc.text! = "25.0%"
         thirdCurrentPerc.text! = "30.0%"
+        }
         
-        newInput1.text! = ""
-        newInput2.text! = ""
-        newInput3.text! = ""
+        newInput1.text = ""
+        newInput2.text = ""
+        newInput3.text = ""
         
         Data.setPercent(value: 0, newPercent: 0.15)
         Data.setPercent(value: 1, newPercent: 0.25)
         Data.setPercent(value: 2, newPercent: 0.30)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
