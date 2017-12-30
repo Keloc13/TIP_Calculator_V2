@@ -41,8 +41,6 @@ class SettingViewController: UIViewController {
         secondCurrentPerc.text! = String(Data.getPercent(value: 1)*100) + "%"
         thirdCurrentPerc.text! = String(Data.getPercent(value: 2)*100) + "%"
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     /*
@@ -72,7 +70,6 @@ class SettingViewController: UIViewController {
         secondCurrentPerc.text! = String(Data.getPercent(value: 1)*100) + "%"
         thirdCurrentPerc.text! = String(Data.getPercent(value: 2)*100) + "%"
     }
-    
     
     /*
      Method Name: resetButton
