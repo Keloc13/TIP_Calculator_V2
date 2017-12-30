@@ -8,22 +8,22 @@
 
 import Foundation
 
-class Data{
-    static var DEBUG = true
-    static var secondArray:[Double]=[0.15,0.25,0.30]
+class Data {
+    static let DEBUG = true
+    static var secondArray: [Double] = [0.15,0.25,0.30]
     
-    static func getPercent(value: Int)->Double{
+    static func getPercent(value: Int)->Double {
         if DEBUG { print("Data is being accessed") }
         return secondArray[value]
     }
     
-    static func setPercent(value: Int, newPercent: Double){
+    static func setPercent(value: Int, newPercent: Double) {
         if DEBUG { print("Data has changed") }
         secondArray[value] = newPercent
     }
 }
 
-struct defaultKeys{
+struct defaultKeys {
     static let key1 = "FirstKey"
     static let key2 = "SecondKey"
     static let keyTime = "TimeKey"

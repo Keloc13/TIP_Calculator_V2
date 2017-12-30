@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            landmarkName = "updateBillAndTip()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,23 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "updateBillAndTip()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tip_Calculator_V1/ViewController.swift"
-            timestampString = "536366113.93632"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "updateInputText(_:)"
+            landmarkName = "updateLeftPercent(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            landmarkName = "updateInputText(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -26,9 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var percentType: Double = 0.0
     let DEBUG: Bool = false
     
-    /*
-     LIFECYCLE METHODS
-     */
+    /* LIFECYCLE METHODS */
     
     /*
      Method Name: viewDidLoad
@@ -60,7 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if let dateOne = defaults.string(forKey: defaultKeys.keyTime){
             
-            if(Double(dateOne)! + 600 > NSDate().timeIntervalSince1970) {
+            if Double(dateOne)! + 600 > NSDate().timeIntervalSince1970 {
                 if let stringOne = defaults.string(forKey: defaultKeys.key1) {
                     InputBillAmountL.text! = stringOne
                 }
@@ -98,12 +96,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let value = InputBillAmountL!.text {
             if value.count != 0 {
                 if value.count == (4 + String(ViewController.getSymbolForCurrencyCode()!).count) && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count ))) == String(ViewController.getSymbolForCurrencyCode()!) + "0.0" {
-                   
                     let indexEnd = value.index(value.endIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count - value.count)
                     InputBillAmountL.text! = String(value[indexEnd...])
                     changeCoordinate()
                 } else if value.count == String(ViewController.getSymbolForCurrencyCode()!).count + 2 && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: String(ViewController.getSymbolForCurrencyCode()!).count + 2))) == String(ViewController.getSymbolForCurrencyCode()!) + "0." {
-                    
                     InputBillAmountL.text! = ""
                     changeCoordinate()
                 }
@@ -126,14 +122,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if DEBUG { print("Made it into UpdateBillAmount") }
         
         if let stringValue = InputBillAmountL!.text {
-            if ((stringValue.count == 1
+            if (stringValue.count == 1
                 && stringValue != String(describing: ViewController.getSymbolForCurrencyCode()))
-                || stringValue.count > 1) {
+                || stringValue.count > 1 {
                 var billAmount = 0.0
-                
-                if (String(describing: stringValue.first) ==
+                if String(describing: stringValue.first) ==
                     String(describing: ViewController.getSymbolForCurrencyCode()!.first)
-                    && stringValue.count > 1) {
+                    && stringValue.count > 1 {
                     let index = stringValue.index(stringValue.startIndex, offsetBy: 1)
                     billAmount = round((100)*Double(stringValue[index...])!)/100
                 } else if String(describing: stringValue.first) !=
@@ -191,7 +186,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             defaults.set(String("0.0"),forKey: defaultKeys.key1)
         }
         defaults.set(String(BillPlusTipL.text!),forKey: defaultKeys.key2)
-    defaults.set(String( NSDate().timeIntervalSince1970),forKey:defaultKeys.keyTime)
+        defaults.set(String( NSDate().timeIntervalSince1970),forKey:defaultKeys.keyTime)
     }
     
     /* ANIMATION */
@@ -236,4 +231,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
  }
-
