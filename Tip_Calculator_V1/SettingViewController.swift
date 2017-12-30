@@ -10,8 +10,7 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
-    let DEBUG = true
-    var singleData = Data()
+    let DEBUG: Bool = false
     
     @IBOutlet weak var resetOL: UIButton!
     @IBOutlet weak var changeOL: UIButton!
@@ -30,17 +29,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if DEBUG { print("Made it to settingViewController load") }
-        
         resetOL.layer.cornerRadius = 8
         changeOL.layer.cornerRadius = 8
-        
-        if  let _ = firstCurrentPerc.text,
-            let _ = secondCurrentPerc.text,
-            let _ = thirdCurrentPerc.text {
-        firstCurrentPerc.text! = String(Data.getPercent(value: 0)*100) + "%"
-        secondCurrentPerc.text! = String(Data.getPercent(value: 1)*100) + "%"
-        thirdCurrentPerc.text! = String(Data.getPercent(value: 2)*100) + "%"
-        }
+        updateData()
     }
     
     /*
@@ -66,9 +57,7 @@ class SettingViewController: UIViewController {
                 Data.setPercent(value: 2, newPercent: Double(newPercent1)!/100)
             }
         }
-        firstCurrentPerc.text! = String(Data.getPercent(value: 0)*100) + "%"
-        secondCurrentPerc.text! = String(Data.getPercent(value: 1)*100) + "%"
-        thirdCurrentPerc.text! = String(Data.getPercent(value: 2)*100) + "%"
+        updateData()
     }
     
     /*
@@ -76,12 +65,12 @@ class SettingViewController: UIViewController {
      Description: This method sets all the text fields and percent to the default 15%, 25%, and 30%.
      */
     @IBAction func resetButton(_ sender: UIButton) {
-        if let _ = firstCurrentPerc,
+        if  let _ = firstCurrentPerc,
             let _ = secondCurrentPerc,
             let _ = thirdCurrentPerc {
-        firstCurrentPerc.text! = "15.0%"
-        secondCurrentPerc.text! = "25.0%"
-        thirdCurrentPerc.text! = "30.0%"
+        firstCurrentPerc.text = "15.0%"
+        secondCurrentPerc.text = "25.0%"
+        thirdCurrentPerc.text = "30.0%"
         }
         
         newInput1.text = ""
@@ -91,5 +80,15 @@ class SettingViewController: UIViewController {
         Data.setPercent(value: 0, newPercent: 0.15)
         Data.setPercent(value: 1, newPercent: 0.25)
         Data.setPercent(value: 2, newPercent: 0.30)
+    }
+    
+    func updateData() {
+        if  let _ = firstCurrentPerc.text,
+            let _ = secondCurrentPerc.text,
+            let _ = thirdCurrentPerc.text {
+            firstCurrentPerc?.text = String(Data.getPercent(value: 0) * 100) + "%"
+            secondCurrentPerc?.text = String(Data.getPercent(value: 1) * 100) + "%"
+            thirdCurrentPerc?.text = String(Data.getPercent(value: 2) * 100) + "%"
+        }
     }
 }

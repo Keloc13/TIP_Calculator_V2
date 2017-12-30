@@ -49,21 +49,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         buttonRight.layer.cornerRadius = 8
         buttonLeft.layer.cornerRadius = 8
         
-        InputBillAmountL.delegate = self
-        TipAmountValueL.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
-        InputBillAmountL.text! = ViewController.getSymbolForCurrencyCode()! + "0.0"
-        InputBillAmountL.becomeFirstResponder()
+        InputBillAmountL?.delegate = self
+        TipAmountValueL?.text = ViewController.getSymbolForCurrencyCode()! + "0.0"
+        InputBillAmountL?.text = ViewController.getSymbolForCurrencyCode()! + "0.0"
+        InputBillAmountL?.becomeFirstResponder()
         
         let defaults = UserDefaults.standard
         
         if let dateOne = defaults.string(forKey: defaultKeys.keyTime){
-            
             if Double(dateOne)! + 600 > NSDate().timeIntervalSince1970 {
                 if let stringOne = defaults.string(forKey: defaultKeys.key1) {
-                    InputBillAmountL.text! = stringOne
+                    InputBillAmountL?.text = stringOne
                 }
                 if let stringTwo = defaults.string(forKey: defaultKeys.key2) {
-                    BillPlusTipL.text! = stringTwo
+                    BillPlusTipL?.text = stringTwo
                 }
             }
             changeCoordinate()
@@ -78,9 +77,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if DEBUG { print("view will appear") }
-        buttonLeft.setTitle(String(Data.getPercent(value: 0)*100)+"%", for: .normal)
-        buttonCenter.setTitle(String(Data.getPercent(value: 1)*100)+"%", for: .normal)
-        buttonRight.setTitle(String(Data.getPercent(value: 2)*100)+"%", for: .normal)
+        buttonLeft.setTitle(String(Data.getPercent(value: 0) * 100)+"%", for: .normal)
+        buttonCenter.setTitle(String(Data.getPercent(value: 1) * 100)+"%", for: .normal)
+        buttonRight.setTitle(String(Data.getPercent(value: 2) * 100)+"%", for: .normal)
     }
     
     /*    METHOD FOR UPDATING THE CURRENCY VALUES      */
@@ -93,14 +92,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func updateInputText(_ sender: UITextField) {
         if DEBUG { print("1. Program made it into UpdateInputText method") }
        
-        if let value = InputBillAmountL!.text {
+        if let value = InputBillAmountL?.text {
             if value.count != 0 {
                 if value.count == (4 + String(ViewController.getSymbolForCurrencyCode()!).count) && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count ))) == String(ViewController.getSymbolForCurrencyCode()!) + "0.0" {
                     let indexEnd = value.index(value.endIndex, offsetBy: 3 + String(ViewController.getSymbolForCurrencyCode()!).count - value.count)
-                    InputBillAmountL.text! = String(value[indexEnd...])
+                    InputBillAmountL?.text = String(value[indexEnd...])
                     changeCoordinate()
                 } else if value.count == String(ViewController.getSymbolForCurrencyCode()!).count + 2 && String(value.prefix(upTo: value.index(value.startIndex, offsetBy: String(ViewController.getSymbolForCurrencyCode()!).count + 2))) == String(ViewController.getSymbolForCurrencyCode()!) + "0." {
-                    InputBillAmountL.text! = ""
+                    InputBillAmountL?.text = ""
                     changeCoordinate()
                 }
             } else {
@@ -126,18 +125,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 && stringValue != String(describing: ViewController.getSymbolForCurrencyCode()))
                 || stringValue.count > 1 {
                 var billAmount = 0.0
-                if String(describing: stringValue.first) ==
+                if  String(describing: stringValue.first) ==
                     String(describing: ViewController.getSymbolForCurrencyCode()!.first)
                     && stringValue.count > 1 {
                     let index = stringValue.index(stringValue.startIndex, offsetBy: 1)
-                    billAmount = round((100)*Double(stringValue[index...])!)/100
+                    billAmount = round((100) * Double(stringValue[index...])!) / 100
                 } else if String(describing: stringValue.first) !=
                     String(describing: ViewController.getSymbolForCurrencyCode()!.first) {
-                    billAmount = round(10*Double(stringValue)!)/10
+                    billAmount = round(10 * Double(stringValue)!) / 10
                 }
-                BillPlusTipL.text! = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount + billAmount*percentType)
-                TipAmountL.text! = String(100*percentType) + "%"
-                TipAmountValueL.text! = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount*percentType)
+                BillPlusTipL?.text = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount + billAmount * percentType)
+                TipAmountL?.text = String(100 * percentType) + "%"
+                TipAmountValueL?.text = String(ViewController.getSymbolForCurrencyCode()!) + String(billAmount * percentType)
             }
         }
     }
@@ -180,7 +179,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if DEBUG { print("stores input and tip values in database.") }
         let defaults = UserDefaults.standard
         
-        if InputBillAmountL.text! != ViewController.getSymbolForCurrencyCode()! + "0.0" {
+        if InputBillAmountL.text != ViewController.getSymbolForCurrencyCode()! + "0.0" {
             defaults.set(String(InputBillAmountL.text!),forKey: defaultKeys.key1)
         } else {
             defaults.set(String("0.0"),forKey: defaultKeys.key1)
@@ -227,7 +226,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.buttonRight.center = CGPoint(x: 237,y: 500)
                 self.buttonCenter.center = CGPoint(x: 162,y: 500)
             }, completion: nil)
-            InputBillAmountL.font = UIFont(name:"fontname", size: 10.0)
+            InputBillAmountL?.font = UIFont(name:"fontname", size: 10.0)
         }
     }
  }

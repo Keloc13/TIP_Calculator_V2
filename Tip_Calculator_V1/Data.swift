@@ -9,10 +9,10 @@
 import Foundation
 
 class Data {
-    static let DEBUG = true
+    static let DEBUG: Bool = false
     static var secondArray: [Double] = [0.15,0.25,0.30]
     
-    static func getPercent(value: Int)->Double {
+    static func getPercent(value: Int) -> Double {
         if DEBUG { print("Data is being accessed") }
         return secondArray[value]
     }
