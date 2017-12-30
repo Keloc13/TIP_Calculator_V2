@@ -36,7 +36,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        initialFormatOfView()
+        checkForPreviousData()
+    }
+    
+    func initialFormatOfView() {
         TipAmountL.center = CGPoint(x: 234,y: 500)
         BillPlusTipL.center = CGPoint(x: 161,y: 500)
         LabelBillTip.center = CGPoint(x: 160,y: 500)
@@ -53,9 +57,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         TipAmountValueL?.text = ViewController.getSymbolForCurrencyCode()! + "0.0"
         InputBillAmountL?.text = ViewController.getSymbolForCurrencyCode()! + "0.0"
         InputBillAmountL?.becomeFirstResponder()
-        
+    }
+    
+    func checkForPreviousData() {
         let defaults = UserDefaults.standard
-        
         if let dateOne = defaults.string(forKey: defaultKeys.keyTime){
             if Double(dateOne)! + 600 > NSDate().timeIntervalSince1970 {
                 if let stringOne = defaults.string(forKey: defaultKeys.key1) {
